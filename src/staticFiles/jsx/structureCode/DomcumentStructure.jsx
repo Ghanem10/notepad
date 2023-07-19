@@ -34,9 +34,8 @@ export function FormData({ handleSubmit, handleChange, name, verify }) {
                 <input 
                     className="task-input" 
                     type="text"
-                    onChange={handleChange}
-                    name="name"
                     value={name}
+                    onChange={handleChange}
                     placeholder="Enter new Task..." 
                 />
                 <button 
@@ -90,9 +89,3 @@ export function ExternalLinksEdit() {
         </div>
     )
 }
-
-export default {
-    NavTaskManager,
-    FormData,
-    ExternalLinks
-};

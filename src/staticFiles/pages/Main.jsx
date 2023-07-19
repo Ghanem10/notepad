@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavWeather, FormData, ExternalLinks } from '../jsx/structureCode/DomcumentStructure';
 import ListOfTasks from "../jsx/structureCode/ListOfTasks";
-
+import { host } from "../../host";
 import '../jsx/css/main.css';
 
 export default function Main() {
@@ -16,7 +16,7 @@ export default function Main() {
             data: { 
             tasks 
         } 
-    } = await axios.get('/api/v1/tasks')
+    } = await axios.get(`${host}/api/v1/tasks`)
         setGetData(tasks);
     }
 
@@ -27,7 +27,7 @@ export default function Main() {
     async function handleSubmit(e) {
         e.preventDefault();
         
-        await axios.post('/api/v1/tasks', { name });
+        await axios.post(`${host}/api/v1/tasks`, { name });
         setName('');
         callBackEnd();
 
@@ -43,7 +43,7 @@ export default function Main() {
         if (el.parentElement.classList.contains('delete-btn')){
             const id = el.parentElement.dataset.id;
 
-            await axios.delete(`/api/v1/tasks/${ id }`);
+            await axios.delete(`${host}/api/v1/tasks/${ id }`);
             callBackEnd();
         }
     }
@@ -53,7 +53,7 @@ export default function Main() {
     }, []);
 
     return (
-        <main>
+        <div className="container">
             <NavWeather />
             <div className="container-main">
                 <div className="form-container">
@@ -71,11 +71,11 @@ export default function Main() {
                     (
                         'There is no Tasks in Queue...'
                     ) : (
-                        getData.map((item, id) => {
+                        getData.map((item, idx) => {
                         const { completed, name, _id: taskID } = item;
                         return (
                           <ListOfTasks 
-                            key={id}
+                            idx={idx}
                             completed={completed}
                             name={name}
                             taskID={taskID}
@@ -87,6 +87,6 @@ export default function Main() {
                 </section>
             </div>
             <ExternalLinks />
-        </main>
+        </div>
     );
 }
