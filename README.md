@@ -6,15 +6,24 @@
 # Code walkthrough
 
 - Task manager app produces a dynamic flow of information among the back-end and front-end systems.
-  Implementing CRUD operations seamlessly by fetching data through the back-end's controllers.
+  Implementing CRUD operations seamlessly by fetching data through the back-end's controllers. The logic
+  for the front end is handled via multiple components for fetching information accordingly.
 
       const router = express.Router();
       
       router.route('/').get(getAllTasks).post(createTask);
       router.route('/:id').get(getTask).patch(updataTask).delete(deleteTask);
+
+# Stack technology
+
+-Back-End:
+  Node.Js, Express.Js, MongoDB, mongoose
   
+-Front-End:
+  React.Js, CSS, JavaScript.
 
 # Installation
+
   - start by cloning the repository into your local environment.
   
         https://github.com/gani1000/auth-login.git
