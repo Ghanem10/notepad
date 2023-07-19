@@ -16,10 +16,10 @@
 
 # Stack technology
 
--Back-End:
+- Back-End:
   Node.Js, Express.Js, MongoDB, mongoose
   
--Front-End:
+- Front-End:
   React.Js, CSS, JavaScript.
 
 # Installation
