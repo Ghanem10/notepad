@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import EditForm from "../jsx/structureCode/editSection";
 import { Link, useSearchParams } from "react-router-dom";
 import { ExternalLinksEdit } from '../jsx/structureCode/DomcumentStructure';
-import { host } from '../../host';
 import axios from 'axios';
 
 import '../jsx/css/edit.css';
@@ -21,7 +20,7 @@ export default function Edit() {
     async function showInfoTask() {
         const { 
             data: { task } 
-        } = await axios.get(`${host}/api/v1/tasks/${id}`);
+        } = await axios.get(`${import.meta.env.VITE_URL}/api/v1/tasks/${id}`);
         setIncomingData(task);
     }
 
@@ -42,7 +41,7 @@ export default function Edit() {
         const input = IncomingData.name;
         const complete = IncomingData.completed;
 
-        await axios.patch(`${host}/api/v1/tasks/${id}`, { 
+        await axios.patch(`${import.meta.env.VITE_URL}/api/v1/tasks/${id}`, { 
             name: input, 
             completed: complete 
         });

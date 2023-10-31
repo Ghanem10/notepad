@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function ListOfTasks({ completed, name, taskID, deleteBtn, idx }) {
     return (
-        <div key={idx} className={`single-task ${completed && 'task-completed'}`}>
+        <div className={`single-task ${completed && 'task-completed'}`}>
             <h5>
                 <span><i className="far fa-check-circle"></i></span>{name}
             </h5>

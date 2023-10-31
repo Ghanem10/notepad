@@ -22,6 +22,11 @@ app.use('/api/v1/tasks', routes);
 app.use(notFound);
 app.use(errorHandlerMiddleWare);
 
+app.get('/test', (req, res) => { 
+    console.log('testing...'); 
+    res.send({ mes: '/' }); 
+});
+
 const port = process.env.PORT || 3000;
 
 const start = async () => {

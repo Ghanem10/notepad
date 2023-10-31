@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { NavWeather, FormData, ExternalLinks } from '../jsx/structureCode/DomcumentStructure';
 import ListOfTasks from "../jsx/structureCode/ListOfTasks";
-import { host } from "../../host";
 import '../jsx/css/main.css';
 
 export default function Main() {
@@ -16,7 +15,7 @@ export default function Main() {
             data: { 
             tasks 
         } 
-    } = await axios.get(`${host}/api/v1/tasks`)
+    } = await axios.get(`${import.meta.env.VITE_URL}/api/v1/tasks`)
         setGetData(tasks);
     }
 
@@ -27,7 +26,7 @@ export default function Main() {
     async function handleSubmit(e) {
         e.preventDefault();
         
-        await axios.post(`${host}/api/v1/tasks`, { name });
+        await axios.post(`${import.meta.env.VITE_URL}/api/v1/tasks`, { name });
         setName('');
         callBackEnd();
 
@@ -43,7 +42,7 @@ export default function Main() {
         if (el.parentElement.classList.contains('delete-btn')){
             const id = el.parentElement.dataset.id;
 
-            await axios.delete(`${host}/api/v1/tasks/${ id }`);
+            await axios.delete(`${import.meta.env.VITE_URL}/api/v1/tasks/${ id }`);
             callBackEnd();
         }
     }
@@ -67,22 +66,20 @@ export default function Main() {
                 <section className="tasks-container">
                     <p className="loading-text"></p>
                     <div className="tasks">
-                    {(getData.length < 1) ? 
-                    (
-                        'There is no Tasks in Queue...'
-                    ) : (
-                        getData.map((item, idx) => {
-                        const { completed, name, _id: taskID } = item;
-                        return (
-                          <ListOfTasks 
-                            idx={idx}
-                            completed={completed}
-                            name={name}
-                            taskID={taskID}
-                            deleteBtn={(e) => deleteBtn(e)}
-                          />  
-                        );
-                    }))}
+                        {(getData.length < 1) ? 
+                        (
+                            'There is no Tasks in Queue...'
+                        ) : (
+                            getData.map(({ completed, name, _id: taskID }, idx) => (
+                            <ListOfTasks 
+                                key={idx}
+                                idx={idx}
+                                completed={completed}
+                                name={name}
+                                taskID={taskID}
+                                deleteBtn={(e) => deleteBtn(e)}
+                            /> 
+                        )))}
                     </div>
                 </section>
             </div>
