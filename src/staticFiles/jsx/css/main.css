@@ -462,3 +462,12 @@ form > :last-child {
   text-align: center;
   margin-top: 1rem;
 }
+
+
+@media (max-width: 1130px) {
+  .container-main {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
