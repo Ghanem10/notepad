@@ -13,7 +13,6 @@ const app = express();
 
 /* MiddleWare */
 app.use(cors());
-app.use(express.static('./dist'));
 app.use(express.json());
 
 app.use('/api/v1/tasks', routes);
@@ -21,11 +20,6 @@ app.use('/api/v1/tasks', routes);
 
 app.use(notFound);
 app.use(errorHandlerMiddleWare);
-
-app.get('/test', (req, res) => { 
-    console.log('testing...'); 
-    res.send({ mes: '/' }); 
-});
 
 const port = process.env.PORT || 3000;
 
