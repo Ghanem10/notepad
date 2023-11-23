@@ -17,12 +17,6 @@ export default function Edit() {
     const URL = search.get('id');
     const id = URL.split('/').slice(-1)[0];
 
-    async function showInfoTask() {
-        const { 
-            data: { task } 
-        } = await axios.get(`${import.meta.env.VITE_URL}/api/v1/tasks/${id}`);
-        setIncomingData(task);
-    }
 
     function handleToggle() {
         const complete = IncomingData.completed;
@@ -63,9 +57,14 @@ export default function Edit() {
     }
 
     useEffect(() => {
+        const showInfoTask = async () => {
+            const { 
+                data: { task } 
+            } = await axios.get(`${import.meta.env.VITE_URL}/api/v1/tasks/${id}`);
+            setIncomingData(task);
+        }
         
         showInfoTask();
-
     },[]);
 
     return (

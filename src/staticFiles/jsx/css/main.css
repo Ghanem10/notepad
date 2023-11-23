@@ -348,7 +348,6 @@ form > :last-child {
   text-align: center;
 }
 .tasks-container {
-  width: 100%;
   width: 90vw;
   max-width: var(--fixed-width);
   margin: 0 auto;
@@ -373,7 +372,10 @@ form > :last-child {
   box-shadow: var(--shadow-4);
 }
 .single-task h5 {
+  text-align: start;
+  width: 100%;
   margin-bottom: 0;
+  word-break: keep-all;
 }
 .single-task span {
   display: inline-block;
@@ -469,5 +471,14 @@ form > :last-child {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+  }
+
+  .submit-btn {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .task-input {
+    width: 100%;
   }
 }
