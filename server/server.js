@@ -17,6 +17,9 @@ app.use(express.json());
 
 app.use('/api/v1/tasks', routes);
 
+app.get("/test", (req, res) => {
+    res.json({ mes: "success!" });
+});
 
 app.use(notFound);
 app.use(errorHandlerMiddleWare);
