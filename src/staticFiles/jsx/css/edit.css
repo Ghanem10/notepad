@@ -99,7 +99,7 @@ textarea {
 button,
 input {
   /* 1 */
-  overflow: visible;
+  overflow: hidden;
 }
 
 
@@ -143,6 +143,9 @@ fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
 
+.task-edit-id {
+  word-break: break-all;
+}
 
 
 legend {
